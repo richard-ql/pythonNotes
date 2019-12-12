@@ -7,6 +7,10 @@ print(foo_bar.__annotations__)
 sig = inspect.signature(foo_bar)
 print(sig)
 print(sig.parameters)
+for i, item in enumerate(sig.parameters.items()):
+    name, param = item
+    print(isinstance(1, param.annotation))
+    print(i+1, name, '\n', param.annotation, '\n', param.kind, '\n', param.default)
 print(sig.parameters['a'])
 print(sig.return_annotation)
 

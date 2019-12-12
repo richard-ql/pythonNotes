@@ -3,7 +3,7 @@ from functools import wraps
 from inspect import signature
 
 
-def check(func):
+def check1(func):
     ann = func.__annotations__
     sig = signature(func)
     @wraps(func)
@@ -15,10 +15,27 @@ def check(func):
         return func(*args, **kwargs)
     return wrap
 
-@check
+def check2(func):
+    sig = signature(func)
+    param_d = sig.parameters
+    print(param_d)
+    @wraps(func)
+    def wrap(*args, **kwargs):
+        bound = sig.bind(*args, **kwargs)
+        for k, v in bound.arguments.items():
+            if k in param_d:
+                print(v, param_d[k].annotation)
+                assert isinstance(v, param_d[k].annotation), f'parm {k} Type Error: expected {param_d[k].annotation}'
+        return func(*args, **kwargs)
+    return wrap
+
+
+
+# @check1
+@check2
 def add(a: int, b: int) -> int:
     while b:
         a, b = b, a % b
     return a
 
-add(2, 3.1)
+add(2, 3)
