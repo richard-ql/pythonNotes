@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for qsbk project
+# Scrapy settings for wx_community project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,14 +9,14 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'qsbk'
+BOT_NAME = 'wx_community'
 
-SPIDER_MODULES = ['qsbk.spiders']
-NEWSPIDER_MODULE = 'qsbk.spiders'
+SPIDER_MODULES = ['wx_community.spiders']
+NEWSPIDER_MODULE = 'wx_community.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'qsbk (+http://www.yourdomain.com)'
+#USER_AGENT = 'wx_community (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
@@ -42,19 +42,19 @@ DOWNLOAD_DELAY = 1
 DEFAULT_REQUEST_HEADERS = {
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
     'Accept-Language': 'en',
-    'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Mobile Safari/537.36'
+    'User_Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36'
 }
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'qsbk.middlewares.QsbkSpiderMiddleware': 543,
+#    'wx_community.middlewares.WxCommunitySpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'qsbk.middlewares.QsbkDownloaderMiddleware': 543,
+#    'wx_community.middlewares.WxCommunityDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -65,9 +65,9 @@ DEFAULT_REQUEST_HEADERS = {
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-ITEM_PIPELINES = {
-   'qsbk.pipelines.QsbkPipeline': 300,
-}
+#ITEM_PIPELINES = {
+#    'wx_community.pipelines.WxCommunityPipeline': 300,
+#}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

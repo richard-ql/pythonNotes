@@ -16,5 +16,11 @@ class QsSpiderSpider(scrapy.Spider):
     def parse(self, response):
         subjects = response.xpath("//a[starts-with(@href, '/subject/')]")
         for item in subjects:
-            url_sub = item.xpath("./@href").get()
-            yield  {'url_sub': url_sub}
+            url_sub = self.base_urls + item.xpath("./@href").get()
+            # yield  {'url_sub': url_sub}
+            yield scrapy.Request(url_sub, callback=self.parse_article)
+
+    def parse_article(self, response):
+        article_title = response.xpath("//h1/text()").get()
+        article_content = response.xpath('//*[@id="content"]/div[2]/text()').get()
+        return {article_title: article_content}
