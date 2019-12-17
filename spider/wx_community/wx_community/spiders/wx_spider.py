@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 import scrapy
+
+from ..items import WxCommunityItem
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
 
@@ -17,5 +19,6 @@ class WxSpiderSpider(CrawlSpider):
     def parse_article(self, response):
         title = response.xpath('//h1[@class="ph"]/text()').get()
         article_content = response.xpath('//td[@id="article_content"]//text()').getall()
-        print("".join(article_content))
-
+        article_content = "".join(article_content)
+        item = WxCommunityItem(title=title, content=article_content)
+        yield item

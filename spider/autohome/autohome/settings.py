@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for wx_community project
+# Scrapy settings for autohome project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,14 +9,14 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'wx_community'
+BOT_NAME = 'autohome'
 
-SPIDER_MODULES = ['wx_community.spiders']
-NEWSPIDER_MODULE = 'wx_community.spiders'
+SPIDER_MODULES = ['autohome.spiders']
+NEWSPIDER_MODULE = 'autohome.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'wx_community (+http://www.yourdomain.com)'
+#USER_AGENT = 'autohome (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
@@ -48,13 +48,13 @@ DEFAULT_REQUEST_HEADERS = {
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'wx_community.middlewares.WxCommunitySpiderMiddleware': 543,
+#    'autohome.middlewares.AutohomeSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'wx_community.middlewares.WxCommunityDownloaderMiddleware': 543,
+#    'autohome.middlewares.AutohomeDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -66,7 +66,7 @@ DEFAULT_REQUEST_HEADERS = {
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'wx_community.pipelines.WxCommunityPipeline': 300,
+   'autohome.pipelines.AutohomePipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

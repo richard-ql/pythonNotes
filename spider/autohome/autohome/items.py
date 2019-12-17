@@ -8,8 +8,8 @@
 import scrapy
 
 
-class WxCommunityItem(scrapy.Item):
+class AutohomeItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    title = scrapy.Field()
-    content = scrapy.Field()
+    name = scrapy.Field()
+    url = scrapy.Field()

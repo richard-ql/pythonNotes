@@ -31,3 +31,8 @@ DEFAULT_REQUEST_HEADERS = {
 ## 创建crawl spider
 
 + scrapy genspider -t crawl example example.com
+
+## 使用scrapy shell 调式
+
++ scrapy shell "http://www.wxapp-union.com/article-5692-1.html"
++ response.xpath('//h1[@class="ph"]/text()').get()
