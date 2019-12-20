@@ -36,3 +36,19 @@ DEFAULT_REQUEST_HEADERS = {
 
 + scrapy shell "http://www.wxapp-union.com/article-5692-1.html"
 + response.xpath('//h1[@class="ph"]/text()').get()
+
+## 调用scrapy files pipelines
+
+1. 定义Item， 然后再item中定义2个属性，分别为file_urls 和 files， file_urls是用来存储需要下载文件的链接地址，是一个列表
+类型。
+2. 当文件下载完成后，会把下载文件的相关信息保存到item的files属性中，比如下载路径、文件的校验码等等。
+3. 在配置文件settings.py中配置FILES_STORE=下载文件保存路径。
+4. 启动files pipelines， 在ITEM_PIPELINES中配置 'scrapy.pipelines.files.FilesPipeline': 1。
+
+## 调用scrapy images pipelines
+
+1. 定义Item， 然后再item中定义2个属性，分别为image_urls 和 images， image_urls是用来存储需要下载文件的链接地址，是一个列
+表类型。
+2. 当文件下载完成后，会把下载文件的相关信息保存到item的images属性中，比如下载路径、文件的校验码等等。
+3. 在配置文件settings.py中配置IMAGES_STORE=下载文件保存路径。
+4. 启动files pipelines， 在ITEM_PIPELINES中配置 'scrapy.pipelines.images.ImagesPipeline': 1。
