@@ -5,6 +5,7 @@ from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
 from ..items import AutohomeItem
 
+
 class Bmw5SpiderSpider(CrawlSpider):
     name = 'bmw5_spider'
     allowed_domains = ['car.autohome.com.cn']
@@ -12,9 +13,8 @@ class Bmw5SpiderSpider(CrawlSpider):
     rules = (
         Rule(LinkExtractor(allow=r'https://car.autohome.com.cn/pic/series-s41964/65.+'),
              callback='parse_page',
-             follow=True)
+             follow=True),
     )
-
 
     # def parse(self, response):
     #     title = response.xpath("//div[@class='uibox']")[1:]
@@ -26,4 +26,4 @@ class Bmw5SpiderSpider(CrawlSpider):
     #         yield item
 
     def parse_page(self, response):
-        pass
+        title = response.xpath("//div[@class='uibox']")[1:]
