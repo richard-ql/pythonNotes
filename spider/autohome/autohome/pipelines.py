@@ -37,7 +37,7 @@ class AutoHomeImagesPipelines(ImagesPipeline):
 
     def file_path(self, request, response=None, info=None):
         path = super(AutoHomeImagesPipelines, self).file_path(request, response, info)
-        category = request.item.get('name')
+        category = request.item.get('category')
         category_path = os.path.join(IMAGES_STORE, category)
         image_name = path.replace('full/', '')
         image_path = os.path.join(category_path, image_name)

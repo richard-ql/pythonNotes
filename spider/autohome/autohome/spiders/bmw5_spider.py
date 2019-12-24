@@ -9,7 +9,7 @@ from ..items import AutohomeItem
 class Bmw5SpiderSpider(CrawlSpider):
     name = 'bmw5_spider'
     allowed_domains = ['car.autohome.com.cn']
-    start_urls = ['https://car.autohome.com.cn/pic/series-s41964/65.html#pvareaid=2042220']
+    start_urls = ['https://car.autohome.com.cn/pic/series-s41964/65.html']
     rules = (
         Rule(LinkExtractor(allow=r'https://car.autohome.com.cn/pic/series-s41964/65.+'),
              callback='parse_page',
@@ -26,4 +26,7 @@ class Bmw5SpiderSpider(CrawlSpider):
     #         yield item
 
     def parse_page(self, response):
-        title = response.xpath("//div[@class='uibox']")[1:]
+        category = response.xpath("//div[@class='uibox']/div/text()").get()
+        srcs = response.xpath("//div[contains(@class, 'uibox-con')]/ul/li//img/@src").getall()
+        big_srcs = [response.urljoin(src.replace("240x180_0_q95_c42", "800x0_1_q95")) for src in srcs]
+        yield  AutohomeItem(category=category, image_urls=big_srcs)
