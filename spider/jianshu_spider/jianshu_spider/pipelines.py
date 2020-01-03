@@ -12,10 +12,10 @@ from twisted.enterprise import adbapi
 class JianshuSpiderPipeline(object):
     def __init__(self):
         dbparams = {
-            'host': '127.0.0.1',
-            'port': '3306',
+            'host': '192.168.43.42',
+            'port': 3306,
             'user': 'root',
-            'password': 'root',
+            'password': '123456',
             'database': 'jianshu',
             'charset': 'utf8'
         }
@@ -24,9 +24,10 @@ class JianshuSpiderPipeline(object):
         self._sql = None
 
     def process_item(self, item, spider):
+        print("process_item")
+        print(item)
         self.cursor.execute(self.sql, (item['title'], item['content'], item['author'],
-                                       item['avatar'], item['pub_time'], item['origin_url'],
-                                       item['article_id']))
+                                       item['avatar'], item['pub_time'], item['origin_url']))
         self.conn.commit()
         return item
 
@@ -35,7 +36,7 @@ class JianshuSpiderPipeline(object):
         if not self._sql:
             self._sql = """
             insert into article(id, title, content, author, avatar, pub_time,
-            origin_url, article_id) values (null, %s, %s, %s, %s, %s, %s, %s)
+            origin_url, article_id) values (null, %s, %s, %s, %s, %s, %s)
             """
         return self._sql
 
@@ -59,7 +60,7 @@ class JianshuTwistedPipeline:
         if not self._sql:
             self._sql = """
             insert into article(id, title, content, author, avatar, pub_time,
-            origin_url, article_id) values (null, %s, %s, %s, %s, %s, %s, %s)
+            origin_url, article_id) values (null, %s, %s, %s, %s, %s, %s)
             """
         return self._sql
 
@@ -69,8 +70,7 @@ class JianshuTwistedPipeline:
 
     def insert_item(self, cursor, item):
         cursor.execute(self.sql, (item['title'], item['content'], item['author'],
-                                   item['avatar'], item['pub_time'], item['origin_url'],
-                                   item['article_id']))
+                                   item['avatar'], item['pub_time'], item['origin_url']))
 
     def handle_error(self, error, item, spider):
         print("=error=" * 10)
