@@ -31,5 +31,5 @@ class Outter:
 
 
 if __name__ == "__main__":
-    t = Outter()
+    t = Outter("char")
     t.a()
