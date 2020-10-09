@@ -27,3 +27,5 @@ class Bmw5SpiderSpider(CrawlSpider):
 
     def parse_page(self, response):
         title = response.xpath("//div[@class='uibox']")[1:]
+        s = ""
+        s.isalnum()
