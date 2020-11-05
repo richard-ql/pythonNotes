@@ -14,5 +14,3 @@ appkey = "需要申请"
 strToSign = "根据文档规则生成"
 signature = hmac.new(bytes(appkey, encoding="utf-8"), bytes(strToSign, encoding="utf-8"), digestmod=hashlib.sha256).hexdigest()
 low_sig = signature.lower()
-
-
