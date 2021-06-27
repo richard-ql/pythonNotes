@@ -8,8 +8,12 @@
 import scrapy
 
 
-class AutohomeItem(scrapy.Item):
+class ArticleItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    category = scrapy.Field()
-    image_urls = scrapy.Field()
+    title = scrapy.Field()
+    content = scrapy.Field()
+    origin_url = scrapy.Field()
+    author = scrapy.Field()
+    avatar = scrapy.Field()
+    pub_time = scrapy.Field()

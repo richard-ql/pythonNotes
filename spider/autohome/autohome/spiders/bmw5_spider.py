@@ -9,7 +9,7 @@ from ..items import AutohomeItem
 class Bmw5SpiderSpider(CrawlSpider):
     name = 'bmw5_spider'
     allowed_domains = ['car.autohome.com.cn']
-    start_urls = ['https://car.autohome.com.cn/pic/series-s41964/65.html#pvareaid=2042220']
+    start_urls = ['https://car.autohome.com.cn/pic/series-s41964/65.html']
     rules = (
         Rule(LinkExtractor(allow=r'https://car.autohome.com.cn/pic/series-s41964/65.+'),
              callback='parse_page',
